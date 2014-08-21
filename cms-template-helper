@@ -1,0 +1,36 @@
+(function($) {
+    $.fn.templateHelper = function(options) {
+        
+        var settings = $.extend({
+            whatItem: 3,
+            className: "theClass"
+        }, options);
+
+    return this.each( function (index) {
+
+        
+        index += 1;
+        if(index % settings.whatItem == 0) {
+            $(this).addClass(settings.className);
+            console.log(index);
+        }
+    });
+};
+}(jQuery));
+
+
+$(document).ready(function(){
+
+    //CMS TEMPLATE HELPERS, HELPS WITH IE7-8 as well
+    $( "#global-search li:nth-child(3) > span" ).remove("span");
+
+    $("#slider-thumbs li").templateHelper({
+        whatItem: 4,
+        className: "no-right-margin"
+    });
+     $(".video-chunk li").templateHelper({
+        whatItem: 3,
+        className: "no-right-margin"
+    });
+    
+});//ends doc.ready();
